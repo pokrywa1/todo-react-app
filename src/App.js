@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import { Fragment, useState } from 'react';
 import './App.css';
+import TodoContainer from './components/TodoContainer';
+import AddForm from './components/AddForm';
 
 function App() {
+  const [formIsShown, setFormIsShown] = useState(false);
+  const closeModalHandler = () => {
+    setFormIsShown(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {formIsShown && <AddForm onClose={closeModalHandler}></AddForm>}
+      <TodoContainer showForm={setFormIsShown}></TodoContainer>
+    </Fragment>
   );
 }
 
