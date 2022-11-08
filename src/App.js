@@ -18,7 +18,11 @@ function App() {
           todos={todos}
         ></AddForm>
       )}
-      <TodoContainer showForm={setFormIsShown} todos={todos}></TodoContainer>
+      <TodoContainer
+        showForm={setFormIsShown}
+        todos={todos}
+        setTodos={setTodos}
+      ></TodoContainer>
     </Fragment>
   );
 }

@@ -38,8 +38,11 @@ function TodoContainer(props) {
             return (
               <TodoList
                 key={item.id}
+                id={item.id}
                 name={item.name}
                 done={item.done}
+                setTodos={props.setTodos}
+                todos={props.todos}
               ></TodoList>
             );
           })}
