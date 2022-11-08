@@ -10,7 +10,7 @@ function TodoList(props) {
         return {
           id: item.id,
           name: item.name,
-          done: true,
+          done: !item.done,
         };
       });
 
@@ -18,10 +18,14 @@ function TodoList(props) {
     });
     console.log(props.todos);
   };
+
+  const markButtonClass = props.done
+    ? classes.done__button + ' ' + classes.mark__done
+    : classes.done__button;
   return (
     <li className={classes.todo__object}>
-      <div className={classes.done__button} onClick={doneHandler}></div>
-      {props.name}
+      <div className={markButtonClass} onClick={doneHandler}></div>
+      {!props.done ? props.name : <s>{props.name}</s>}
     </li>
   );
 }

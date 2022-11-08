@@ -13,3 +13,7 @@
   margin-right: 1rem;
   cursor: pointer;
 }
+
+.mark__done {
+  background-color: var(--main-color);
+}

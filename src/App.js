@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import './App.css';
 import TodoContainer from './components/TodoContainer';
 import AddForm from './components/AddForm';
@@ -6,6 +6,14 @@ import AddForm from './components/AddForm';
 function App() {
   const [formIsShown, setFormIsShown] = useState(false);
   const [todos, setTodos] = useState([]);
+  const [doneTodos, setDoneTodos] = useState([]);
+  useEffect(() => {
+    const onlyDone = todos.filter(item => item.done);
+    setDoneTodos(item => {
+      return onlyDone;
+    });
+    console.log(doneTodos);
+  }, [todos]);
   const closeModalHandler = () => {
     setFormIsShown(false);
   };
@@ -22,6 +30,7 @@ function App() {
         showForm={setFormIsShown}
         todos={todos}
         setTodos={setTodos}
+        doneTodos={doneTodos}
       ></TodoContainer>
     </Fragment>
   );

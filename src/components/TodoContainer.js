@@ -48,6 +48,23 @@ function TodoContainer(props) {
           })}
         </ul>
       )}
+      {isActive && (
+        <ul className={classes.todo__container}>
+          {props.doneTodos.map(item => {
+            return (
+              <TodoList
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                done={item.done}
+                setTodos={props.setTodos}
+                doneTodos={props.doneTodos}
+              ></TodoList>
+            );
+          })}
+        </ul>
+      )}
+
       <button onClick={newTaskHandler} className={classes.add__button}>
         + New Task
       </button>
