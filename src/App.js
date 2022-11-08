@@ -5,13 +5,20 @@ import AddForm from './components/AddForm';
 
 function App() {
   const [formIsShown, setFormIsShown] = useState(false);
+  const [todos, setTodos] = useState([]);
   const closeModalHandler = () => {
     setFormIsShown(false);
   };
   return (
     <Fragment>
-      {formIsShown && <AddForm onClose={closeModalHandler}></AddForm>}
-      <TodoContainer showForm={setFormIsShown}></TodoContainer>
+      {formIsShown && (
+        <AddForm
+          onClose={closeModalHandler}
+          setTodos={setTodos}
+          todos={todos}
+        ></AddForm>
+      )}
+      <TodoContainer showForm={setFormIsShown} todos={todos}></TodoContainer>
     </Fragment>
   );
 }

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import classes from './TodoContainer.module.css';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsCalendarCheck } from 'react-icons/bs';
+import TodoList from './TodoList';
 function TodoContainer(props) {
   const [isActive, setActive] = useState(false);
+
   const changeTabHandler = () => {
     setActive(!isActive);
   };
@@ -30,7 +32,19 @@ function TodoContainer(props) {
           </li>
         </ul>
       </nav>
-
+      {!isActive && (
+        <ul className={classes.todo__container}>
+          {props.todos.map(item => {
+            return (
+              <TodoList
+                key={item.id}
+                name={item.name}
+                done={item.done}
+              ></TodoList>
+            );
+          })}
+        </ul>
+      )}
       <button onClick={newTaskHandler} className={classes.add__button}>
         + New Task
       </button>

@@ -57,3 +57,7 @@
 .add__button:hover {
   background-color: rgb(131, 93, 175);
 }
+
+.todo__container {
+  margin-top: 2rem;
+}

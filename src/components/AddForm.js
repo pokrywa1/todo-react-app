@@ -17,6 +17,17 @@ function AddForm(props) {
   };
   const buttonHandler = e => {
     e.preventDefault();
+    if (inputText.length === 0) return; //
+    props.setTodos([
+      ...props.todos,
+      {
+        id: Math.random() * 1000,
+        name: inputText,
+        done: false,
+      },
+    ]);
+    console.log(props.todos);
+    props.onClose();
   };
   return (
     <Modal onClose={props.onClose}>
