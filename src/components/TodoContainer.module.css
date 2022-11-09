@@ -57,6 +57,10 @@
 .add__button:hover {
   background-color: rgb(131, 93, 175);
 }
+.add__button:disabled {
+  cursor: default;
+  background-color: grey;
+}
 
 .todo__container {
   margin-top: 2rem;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './TodoContainer.module.css';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsCalendarCheck } from 'react-icons/bs';
@@ -14,6 +14,12 @@ function TodoContainer(props) {
     e.preventDefault();
     props.showForm(true);
   };
+
+  const clearHandler = () => {
+    const clearedTodos = props.todos.filter(item => !item.done);
+    props.setTodos(clearedTodos);
+  };
+
   return (
     <main className={classes.main__container}>
       <nav>
@@ -65,9 +71,20 @@ function TodoContainer(props) {
         </ul>
       )}
 
-      <button onClick={newTaskHandler} className={classes.add__button}>
-        + New Task
-      </button>
+      {!isActive && (
+        <button onClick={newTaskHandler} className={classes.add__button}>
+          + New Task
+        </button>
+      )}
+      {isActive && (
+        <button
+          disabled={!props.doneTodos.length > 0}
+          onClick={clearHandler}
+          className={classes.add__button}
+        >
+          Clear all
+        </button>
+      )}
     </main>
   );
 }

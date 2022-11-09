@@ -9,9 +9,7 @@ function App() {
   const [doneTodos, setDoneTodos] = useState([]);
   useEffect(() => {
     const onlyDone = todos.filter(item => item.done);
-    setDoneTodos(item => {
-      return onlyDone;
-    });
+    setDoneTodos(onlyDone);
     console.log(doneTodos);
   }, [todos]);
   const closeModalHandler = () => {
